@@ -27,6 +27,8 @@ import SellerLayout from "./pages/seller/SellerLayout";
 import AddProduct from "./pages/seller/AddProduct";
 import ProductList from "./pages/seller/ProductList";
 import Orders from './pages/seller/Orders';
+import WhatsAppChatButton from "./components/WhatsAppChatButton";
+
 
 const App = () => {
   const location = useLocation();
@@ -73,6 +75,7 @@ const App = () => {
 
      
       {!isHiddenLayoutPath && <Footer />}
+        {!isHiddenLayoutPath && <WhatsAppChatButton />}
     </div>
   );
 };
