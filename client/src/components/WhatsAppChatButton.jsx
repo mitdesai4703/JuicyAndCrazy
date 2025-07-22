@@ -13,7 +13,7 @@ const WhatsAppChatButton = () => {
 
   return (
     <a
-      href="https://wa.me/919510544723?text=Hi%20Juicy%20and%20Crazy%2C%20I%20need%20some%20help%20with%20my%20order."
+      href="https://wa.me/919898830733?text=Hi%20Juicy%20and%20Crazy%2C%20I%20need%20some%20help%20with%20my%20order."
       target="_blank"
       rel="noopener noreferrer"
       style={{
