@@ -3,21 +3,15 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
 import toast from "react-hot-toast";
-import { FiShoppingCart } from "react-icons/fi";
+import { FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef();
   const navigate = useNavigate();
 
-  const {
-    user,
-    setUser,
-    setShowUserLogin,
-    getCartCount,
-    axios,
-  } = useAppContext();
-
+  const { user, setUser, setShowUserLogin, getCartCount, axios } = useAppContext();
 
   const logout = async () => {
     try {
@@ -34,7 +28,6 @@ const Navbar = () => {
     }
   };
 
-  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -47,25 +40,35 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-      { name: "About Us", path: "/aboutus" },
+    { name: "About Us", path: "/aboutus" },
     { name: "All Products", path: "/products" },
     { name: "Contact Us", path: "/contactus" },
   ];
 
   return (
-    <nav className="w-full bg-[#003B2F] shadow-md px-6 py-2.5">
-      <div className="max-w-7xl mx-auto flex items-center justify-between w-full">
-        
+    <nav className="w-full bg-[#003B2F] shadow-md px-6 py-3">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+     
         <NavLink to="/" className="flex-shrink-0">
           <img
             src={assets.logo}
             alt="Logo"
-            className="h-14 w-auto hover:scale-105 transition duration-300 ease-in-out"
+            className="h-12 w-auto hover:scale-105 transition"
           />
         </NavLink>
 
-        
-        <div className="flex-1 flex justify-center gap-12 text-base font-semibold text-[#FDF8F0] tracking-wide">
+     
+        <div className="lg:hidden">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-[#D4AF37] text-2xl"
+          >
+            {mobileMenuOpen ? <FiX /> : <FiMenu />}
+          </button>
+        </div>
+
+       
+        <div className="hidden lg:flex flex-1 justify-center gap-10 text-base font-semibold text-[#FDF8F0]">
           {navLinks.map((link, index) => (
             <NavLink
               key={index}
@@ -81,9 +84,9 @@ const Navbar = () => {
           ))}
         </div>
 
-   
+       
         <div className="flex items-center gap-4" ref={dropdownRef}>
-        
+         
           <div
             className="relative cursor-pointer"
             onClick={() => navigate("/cart")}
@@ -104,7 +107,7 @@ const Navbar = () => {
           {user ? (
             <div className="relative">
               <div
-                className="w-10 h-10 bg-[#D4AF37] text-[#1a1a1a] font-bold rounded-full flex items-center justify-center cursor-pointer shadow-md hover:scale-105 transition"
+                className="w-10 h-10 bg-[#D4AF37] text-[#1a1a1a] font-bold rounded-full flex items-center justify-center cursor-pointer hover:scale-105 transition"
                 onClick={() => setDropdownOpen((prev) => !prev)}
               >
                 {user.name?.[0]?.toUpperCase() || "U"}
@@ -131,15 +134,47 @@ const Navbar = () => {
               )}
             </div>
           ) : (
-           <button
-    onClick={() => navigate("/login")}
-    className="bg-[#D4AF37] text-[#1a1a1a] px-6 py-2 rounded-full text-sm font-semibold shadow-md hover:opacity-90 transition cursor-pointer"
-  >
-    Login
-  </button>
+            <button
+              onClick={() => navigate("/login")}
+              className="bg-[#D4AF37] text-[#1a1a1a] px-6 py-2 rounded-full text-sm font-semibold shadow-md hover:opacity-90 transition cursor-pointer hidden lg:inline"
+            >
+              Login
+            </button>
           )}
         </div>
       </div>
+
+      {mobileMenuOpen && (
+        <div className="lg:hidden mt-3 bg-[#003B2F] text-[#FDF8F0] text-base font-semibold rounded-md shadow-lg py-3">
+          <div className="flex flex-col items-start px-4 space-y-4">
+            {navLinks.map((link, index) => (
+              <NavLink
+                key={index}
+                to={link.path}
+                onClick={() => setMobileMenuOpen(false)}
+                className={({ isActive }) =>
+                  `block w-full hover:text-[#D4AF37] transition ${
+                    isActive ? "text-[#D4AF37]" : ""
+                  }`
+                }
+              >
+                {link.name}
+              </NavLink>
+            ))}
+            {!user && (
+              <button
+                onClick={() => {
+                  navigate("/login");
+                  setMobileMenuOpen(false);
+                }}
+                className="bg-[#D4AF37] text-[#1a1a1a] px-4 py-2 rounded-full text-sm font-semibold shadow-md hover:opacity-90 transition"
+              >
+                Login
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
