@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
   const { addToCart } = useAppContext();
 
+  // Determine the unit text
+  const unitText =
+    product.name.toLowerCase() === "assorted icepop" ? "/ box" : "/ pack of 10";
+
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
@@ -23,7 +27,9 @@ const ProductCard = ({ product }) => {
       </Link>
       <div className="px-6 pb-6 text-center">
         <h3 className="text-xl font-bold text-[#003B2F] mb-1">{product.name}</h3>
-        <p className="text-sm text-gray-600 mb-3">₹{product.offerPrice} / stick</p>
+        <p className="text-sm text-gray-600 mb-3">
+          ₹{product.offerPrice} {unitText}
+        </p>
         <motion.button
           whileTap={{ scale: 0.95 }}
           className="px-5 py-2 bg-[#D4AF37] text-[#003B2F] font-semibold rounded-full hover:opacity-90 transition cursor-pointer "

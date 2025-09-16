@@ -4,6 +4,9 @@
 
 *{
   font-family: "Outfit", sans-serif;
+  
+ 
+  box-sizing: border-box;
 }
 
 @theme {

@@ -46,14 +46,14 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full bg-[#003B2F] shadow-md px-6 py-3">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <nav className="w-full bg-[#003B2F] shadow-md px-6 h-[80px] flex items-center">
+      <div className="max-w-7xl mx-auto flex items-center justify-between w-full">
      
         <NavLink to="/" className="flex-shrink-0">
           <img
             src={assets.logo}
             alt="Logo"
-            className="h-12 w-auto hover:scale-105 transition"
+            className="h-30 w-35 hover:scale-105 transition"
           />
         </NavLink>
 

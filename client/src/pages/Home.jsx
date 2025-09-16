@@ -5,6 +5,7 @@ import DeliveryBanner from '../components/Home/DeliveryBanner'
 import WhyChooseUs from '../components/Home/WhyChooseUs'
 import Testimonials from '../components/Home/Testimonials'
 import NewsletterCTA from '../components/Home/NewsLetterCTA'
+import JuicyCarousel from '../components/Home/JuicyCarousel'
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
     <HeroSection/>
     <LatestProduct/>
     <DeliveryBanner/>
+    <JuicyCarousel/>
     <WhyChooseUs/>
     <Testimonials/>
     <NewsletterCTA/>

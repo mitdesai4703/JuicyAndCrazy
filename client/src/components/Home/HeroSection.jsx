@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import juiceBg from "../../assets/candyimg.png";
+import hero from "../../assets/hero.png";
+import hero2 from "../../assets/hero2.png";
+import hero3 from "../../assets/hero3.png";
+
+const images = [hero, hero2, hero3]; 
 
 const HeroSection = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 3000); 
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <motion.section
       className="w-full min-h-[85vh] bg-gradient-to-br from-[#FFFCE8] via-[#FDF8F0] to-[#FFE4B5] flex items-center px-6 sm:px-16 py-10"
@@ -25,15 +39,15 @@ const HeroSection = () => {
           </button>
         </div>
 
-       
+      
         <motion.div
           className="flex-1"
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         >
           <div
-            className="w-[500px] h-[300px] md:h-[450px] bg-contain bg-center bg-no-repeat rounded-2xl shadow-2xl"
-            style={{ backgroundImage: `url(${juiceBg})` }}
+            className="w-[500px] h-[300px] md:h-[450px] bg-contain bg-center bg-no-repeat rounded-2xl shadow-2xl transition-all duration-700"
+            style={{ backgroundImage: `url(${images[currentImage]})` }}
           ></div>
         </motion.div>
       </div>

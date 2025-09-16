@@ -104,14 +104,15 @@ const ContactUs = () => {
               <FaMapMarkerAlt className="text-[#D4AF37] text-xl mt-1" />
               <div>
                 <h3 className="font-semibold text-lg text-[#003B2F] mb-1">Address</h3>
-                <p className="text-sm text-gray-700">123 Tropical Lane, Juice Town, India – 400001</p>
+                <p className="text-sm text-gray-700">Sama , Vadodara, Gujarat</p>
               </div>
             </div>
             <div className="flex gap-4 items-start">
               <FaPhoneAlt className="text-[#D4AF37] text-xl mt-1" />
               <div>
                 <h3 className="font-semibold text-lg text-[#003B2F] mb-1">Phone</h3>
-                <p className="text-sm text-gray-700">+91 98765 43210</p>
+                <p className="text-sm text-gray-700">+91 8511104773</p>
+                 <p className="text-sm text-gray-700">+91 9662523179</p>
               </div>
             </div>
             <div className="flex gap-4 items-start">

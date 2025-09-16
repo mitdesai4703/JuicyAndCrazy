@@ -23,13 +23,18 @@ import black_arrow_icon from "./black_arrow_icon.svg";
 import white_arrow_icon from "./white_arrow_icon.svg";
 import main_banner_bg from "./main_banner_bg.png";
 import add_address_iamge from "./add_address_image.svg";
-
+import assortedflavours from "./assortedflavours.jpg"
 import orangecandy from "./candy.avif";
 import blackberrycandy from "./blackberrycandy.png";
 import litchicandy from "./litchicandy.png";
 import mangocandy from "./mangocandy.png";
+import heroimg from "./hero.png";
 import pineapplecandy from "./pineapplecandy.png";
 import hall from "./hall.jpg";
+import hero2 from "./hero2.png";
+import hero3 from "./hero3.png";
+import hero4 from "./hero4.png";
+import hero5 from "./hero5.png";
 
 
 import { FaLeaf, FaShippingFast, FaRecycle, FaIceCream } from "react-icons/fa";
@@ -41,6 +46,7 @@ export const assets = {
   orangecandy,
   blackberrycandy,
   litchicandy,
+  heroimg,
   mangocandy,
   pineapplecandy,
   arrow_right_icon_colored,
@@ -66,7 +72,11 @@ export const assets = {
   add_address_iamge,
   box_icon,
   accImg,
-  hall
+  hall,
+  hero2,
+  hero3,
+  hero4,
+  hero5,
 };
 
 
@@ -141,35 +151,41 @@ export const dummyOrders = [
 
 export const categories = [
   {
-    text: "Orange Icepop",
-    path: "Icepop",
+    text: "Tangy Orange Icepop",
+    path: "Tangy Orange",
     image: orangecandy,
     bgColor: "#FEF6DA",
   },
   {
-    text: "Blackberry Icepop",
-    path: "Icepop",
+    text: "Bold Blackberry Icepop",
+    path: "Bold Blackberry",
     image: blackberrycandy,
     bgColor: "#9D8B91",
   },
   {
-    text: "Litchi Icepop",
-    path: "Icepop",
+    text: "Lovable Litchi Icepop",
+    path: "Lovable Litchi",
     image: litchicandy,
     bgColor: "#FEE6CD",
   },
   {
-    text: "Mango Icepop",
-    path: "Icepop",
+    text: "Spanish Mango Icepop",
+    path: "Spanish Mango",
     image: mangocandy,
     bgColor: "#ffe259",
   },
   {
-    text: "Pineapple Icepop",
-    path: "Icepop",
+    text: "Juicy Pineapple Icepop",
+    path: "Juicy Pineapple",
     image: pineapplecandy,
     bgColor: "#e6ffe6",
   },
+  {
+  text: "Assorted Flavours",
+  path: "Mix of All",
+  image: assortedflavours, 
+  bgColor: "#fff0e6",
+},
   
 ];
 
@@ -249,3 +265,27 @@ export const whyChooseUsFeatures = [
     desc: "Fun flavors you won't find anywhere else!",
   },
 ];
+
+export const slides = [
+  {
+    src: hero2,
+    title: "Assorted Icepop Box",
+    desc: "Front side of our Juicy’nCrazy Ice Pops assorted pack, ready to delight your taste buds!",
+  },
+  {
+    src: hero3,
+    title: "Nutrition Facts & Flavours",
+    desc: "Five natural fruit flavours: Mango , Pineapple , Blackberry , Orange , Litchi ",
+  },
+  {
+    src: hero4,
+    title: "Guaranteed Safe Quality",
+    desc: "FSSAI approved  • Made with RO water  • Hygienic & safe for everyone  • Taste and safety guaranteed",
+  },
+  {
+    src: hero5,
+    title: "Pure & Natural Ingredients",
+    desc: "Made with natural fruit flavours  • No Saccharin  • Rich in Vitamin C  • Vegan friendly ",
+  },
+];
+

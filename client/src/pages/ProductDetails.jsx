@@ -22,7 +22,6 @@ const ProductDetails = () => {
   const product = products.find((item) => item._id === id);
   const uniqueImages = [...new Set(product?.image || [])];
 
-
   useEffect(() => {
     if (products.length > 0 && product) {
       const sameCategory = products.filter(
@@ -32,24 +31,20 @@ const ProductDetails = () => {
     }
   }, [products, product, id]);
 
- 
   useEffect(() => {
     setThumbnail(uniqueImages[0] || null);
   }, [product]);
 
-  
   useEffect(() => {
     const savedReviews = JSON.parse(localStorage.getItem(`reviews-${id}`)) || [];
     setReviews(savedReviews);
   }, [id]);
 
-  
   const handleReviewChange = (e) => {
     const { name, value } = e.target;
     setReviewForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  
   const handleReviewSubmit = (e) => {
     e.preventDefault();
     const newReview = { ...reviewForm, date: new Date().toISOString() };
@@ -68,9 +63,12 @@ const ProductDetails = () => {
     );
   }
 
+  // Determine unit text
+  const unitText =
+    product.name.toLowerCase() === "assorted icepop" ? "/ box" : "/ pack of 10";
+
   return (
     <section className="min-h-screen py-12 px-6 sm:px-16 bg-[#FFFCE8]">
-     
       <p className="text-sm text-gray-500 mb-4">
         <Link to="/">Home</Link> / <Link to="/products">Products</Link> /{" "}
         <Link to={`/products/${product.category.toLowerCase()}`}>
@@ -79,9 +77,8 @@ const ProductDetails = () => {
         / <span className="text-red-500">{product.name}</span>
       </p>
 
-    
       <div className="flex flex-col md:flex-row gap-16">
-      
+        {/* Thumbnails & Main Image */}
         <div className="flex gap-4">
           {uniqueImages.length > 1 && (
             <div className="flex flex-col gap-3 max-h-[300px] overflow-y-auto">
@@ -107,7 +104,7 @@ const ProductDetails = () => {
           </div>
         </div>
 
-       
+        {/* Product Info */}
         <div className="w-full md:w-1/2">
           <h1 className="text-3xl font-bold text-[#003B2F]">{product.name}</h1>
 
@@ -129,9 +126,9 @@ const ProductDetails = () => {
               {product.price}
             </p>
             <p className="text-2xl font-bold text-[#003B2F]">
-              ₹{product.offerPrice}
+              ₹{product.offerPrice}{" "}
               <span className="text-sm font-normal text-gray-600 ml-2">
-                (incl. all taxes)
+                {unitText} (incl. all taxes)
               </span>
             </p>
           </div>
@@ -167,7 +164,7 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      
+      {/* Reviews Section */}
       <div className="max-w-4xl mx-auto bg-white p-6 mt-16 rounded-xl shadow">
         <h2 className="text-2xl font-semibold text-[#003B2F] mb-4">Customer Reviews</h2>
 
@@ -203,7 +200,6 @@ const ProductDetails = () => {
           </div>
         )}
 
-       
         <form onSubmit={handleReviewSubmit} className="space-y-4">
           <input
             name="name"
@@ -242,7 +238,7 @@ const ProductDetails = () => {
         </form>
       </div>
 
-   
+      {/* Related Products */}
       {relatedProducts.length > 0 && (
         <div className="mt-20">
           <div className="text-center">
